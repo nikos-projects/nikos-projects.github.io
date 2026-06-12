@@ -1,118 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Philipp — Programmer</title>
-  <meta name="description" content="Philipp — programmer (Python, Lua), iOS sideloading enthusiast. Contact: Discord @bruhwhy__" />
-  <style>
-    :root{
-      --bg:#071426; --card:#0f2138; --accent:#3fcf8e; --muted:#9fb0c8;
-      --radius:12px; --maxw:880px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%; margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial; background:linear-gradient(180deg,#041022,#071426); color:#e6f1fb}
-    .wrap{max-width:var(--maxw); margin:32px auto; padding:20px; }
-    header{display:flex;gap:16px;align-items:center}
-    .avatar{
-      width:84px;height:84px;border-radius:16px;background:linear-gradient(135deg,#153a5a,#1a6b6b); display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;color:var(--card);
-      box-shadow: 0 8px 30px rgba(4,10,20,0.6);
-    }
-    h1{margin:0;font-size:20px}
-    p.lead{margin:6px 0 0;color:var(--muted)}
-    .card{background:var(--card); padding:16px; border-radius:var(--radius); margin-top:18px; box-shadow: 0 8px 30px rgba(2,8,20,0.6)}
-    .grid{display:grid;grid-template-columns:1fr;gap:12px}
-    @media(min-width:700px){ .grid{grid-template-columns: 1fr 320px} }
-    ul{margin:8px 0 0;padding-left:18px;color:var(--muted)}
-    .btn{
-      display:inline-block;padding:8px 12px;border-radius:10px;background:linear-gradient(180deg,#2aa86b,#1f8a5a);color:#01221a;font-weight:700;text-decoration:none;border:none;cursor:pointer;
-      box-shadow:0 6px 18px rgba(5,20,30,0.45);
-    }
-    .meta{font-size:13px;color:var(--muted);margin-top:8px}
-    .contact{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    .copy-note{font-size:13px;color:var(--muted);margin-left:8px}
-    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
-    code.handle{background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:8px;font-weight:700;color:#dfffe6}
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="r93obQb6GPQN3ugiqk_bgExhe_Rw1EAIT9BJtLPX0wM" />
+  
+  <title>Moved permanently to nikossrcs</title>
+  
+  <link rel="canonical" href="https://nikossrcs.github.io/"/>
+  
+  <meta http-equiv="refresh" content="0;url=https://nikossrcs.github.io/"/>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="avatar">P</div>
-      <div>
-        <h1>Philipp</h1>
-        <p class="lead">Programmer — Python &amp; Lua. Learning HTML. iOS sideloading enthusiast.</p>
-        <div class="meta">Quick intro page — simple and mobile-friendly.</div>
-      </div>
-    </header>
-
-    <main class="card">
-      <div class="grid">
-        <section>
-          <h2>About me</h2>
-          <p>Hi — I'm Philipp. I write programs in <strong>Python</strong> and <strong>Lua</strong>, and I'm currently learning more web basics (HTML/CSS/JS). I also research and tinker heavily with <em>iOS sideloading</em> — installing apps outside the App Store and related tooling & processes.</p>
-
-          <h3>Skills</h3>
-          <ul>
-            <li>Languages: Python, Lua (learning HTML)</li>
-            <li>Platforms: iOS tooling, general scripting, automation</li>
-            <li>Interests: developer workflows, small utilities, security research</li>
-          </ul>
-        </section>
-
-        <aside>
-          <h2>Contact</h2>
-          <div class="contact">
-            <div>
-              <div style="margin-bottom:8px">Discord</div>
-              <div style="display:flex;gap:8px;align-items:center">
-                <code class="handle" id="discordHandle">@bruhwhy__</code>
-                <button class="btn" id="copyBtn">Copy</button>
-              </div>
-              <div class="copy-note" id="copyNote" aria-live="polite" style="visibility:hidden">Copied!</div>
-            </div>
-          </div>
-
-          <div style="margin-top:12px">
-            <div style="font-size:13px;color:var(--muted)">Prefer other ways?</div>
-            <div style="margin-top:8px">
-              <!-- example mailto (leave commented if you don't want an email link) -->
-              <!--<a href="mailto:you@example.com" class="btn">Email me</a>-->
-              <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</button>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </main>
-
-    <footer>
-      <div>Made by Philipp — feel free to drop a message on Discord.</div>
-    </footer>
-  </div>
-
-  <script>
-    // copy-to-clipboard for the Discord handle
-    (function(){
-      const copyBtn = document.getElementById('copyBtn');
-      const handleEl = document.getElementById('discordHandle');
-      const note = document.getElementById('copyNote');
-
-      copyBtn.addEventListener('click', async () => {
-        const text = handleEl.textContent.trim();
-        try {
-          await navigator.clipboard.writeText(text);
-          note.style.visibility = 'visible';
-          setTimeout(()=> note.style.visibility = 'hidden', 1500);
-        } catch(e) {
-          // fallback
-          const tmp = document.createElement('textarea');
-          tmp.value = text; document.body.appendChild(tmp);
-          tmp.select();
-          try { document.execCommand('copy'); note.style.visibility='visible'; setTimeout(()=>note.style.visibility='hidden',1500); } catch(_) {}
-          tmp.remove();
-        }
-      });
-    })();
-  </script>
+  <p>This site has moved! If you aren't redirected automatically, <a href="https://nikossrcs.github.io/">click here to visit nikossrcs</a>.</p>
 </body>
 </html>
+
+  
